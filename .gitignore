@@ -1,4 +1,11 @@
-.idea/
+
+# sbt
 project/project/
 project/target/
 target/
+
+# IntelliJ
+.idea/
+
+# emacs
+*.*~
