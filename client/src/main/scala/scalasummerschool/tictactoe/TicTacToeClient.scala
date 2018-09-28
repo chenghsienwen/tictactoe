@@ -1,11 +1,19 @@
 package scalasummerschool.tictactoe
 
-import cats.effect.IO
+import cats.effect._
 
-object TicTacToeClient extends App {
-  val program = for {
-    _ <- IO(println("Please implement me!"))
-  } yield ()
+import scala.io.StdIn
 
-  program.unsafeRunSync()
+object TicTacToeClient extends IOApp {
+
+  def clientLoop(): IO[ExitCode] = 
+    for {
+      in   <- IO(StdIn.readLine("lambda> Exit client with 'q': "))
+      code <- {
+        if(in == "q") IO.pure(ExitCode.Success) 
+        else          clientLoop()
+      }
+    } yield code
+
+  def run(args: List[String]): IO[ExitCode] = clientLoop()
 }
