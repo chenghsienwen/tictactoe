@@ -18,6 +18,24 @@ Caveats
 
 Often it's very important to have the right imports in your classes to get access to all the necessary methods. So please keep an eye on those, if you read the documentation. Furthermore, whenever a method definition cannot be found, check your imports first.
 
+Run Server
+===
+```bash
+sbt
+sbt> project server
+sbt> reStart
+```
+
+Open your browser and access `localhost:8080/users`.
+
+Run Client
+===
+```bash
+sbt
+sbt> project client
+sbt> runMain
+```
+
 Tasks
 ===
 
