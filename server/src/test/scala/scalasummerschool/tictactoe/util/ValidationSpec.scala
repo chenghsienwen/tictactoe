@@ -1,6 +1,8 @@
-package com.xing.tictactoe.util
+package scalasummerschool.tictactoe.util
 
-class ValidationSpec extends org.specs2.mutable.Specification {
+import org.specs2.mutable.Specification
+
+object ValidationSpec extends Specification {
 
   "Validation" should {
     "Username is non-empty" in {
