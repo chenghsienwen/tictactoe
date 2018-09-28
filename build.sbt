@@ -51,6 +51,8 @@ lazy val client = (project in file("client"))
 
 lazy val model = (project in file("model"))
   .settings(
-    libraryDependencies ++= circeDep,
+    libraryDependencies ++= circeDep ++ Seq(
+      http4sCirce
+    ),
     addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full)
   )

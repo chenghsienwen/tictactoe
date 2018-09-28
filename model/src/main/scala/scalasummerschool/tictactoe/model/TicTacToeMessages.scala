@@ -2,7 +2,10 @@ package scalasummerschool.tictactoe.model
 
 import scalasummerschool.tictactoe.model.GameEntities.Field
 
-object TicTacToeMessages {
-  final case class MoveRequest(username: String, token: String, field: Field)
-  final case class GameResponse(field: Field)
+sealed trait TicTacToeMessage
+
+object TicTacToeMessage {
+
+  case class MoveRequest(username: String, token: String, field: Field) extends TicTacToeMessage
+  case class GameResponse(field: Field) extends TicTacToeMessage
 }

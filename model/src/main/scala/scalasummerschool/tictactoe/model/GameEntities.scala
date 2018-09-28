@@ -1,6 +1,7 @@
 package scalasummerschool.tictactoe.model
 
 object GameEntities {
+
   type Field = Map[Int, Map[Int, GameSymbol]]
 
   /**
