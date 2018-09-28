@@ -1,4 +1,4 @@
-package com.xing.tictactoe.model
+package scalasummerschool.tictactoe.model
 
 import com.xing.tictactoe.model.GameEntities.Field
 
