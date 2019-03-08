@@ -1,9 +1,9 @@
-
-val Http4sVersion = "0.19.0-M2"
-val CirceVersion = "0.10.0"
-val Specs2Version = "4.2.0"
-val LogbackVersion = "1.2.3"
-
+val Http4sVersion    = "0.19.0-M2"
+val CirceVersion     = "0.10.0"
+val Specs2Version    = "4.2.0"
+val LogbackVersion   = "1.2.3"
+val mockitoVersion   = "1.10.19"
+val scalaTestVersion = "3.0.5"
 val circeDep = Seq(
   "io.circe" %% "circe-core"    % CirceVersion,
   "io.circe" %% "circe-parser"  % CirceVersion,
@@ -12,15 +12,16 @@ val circeDep = Seq(
 
 val http4sCirce = "org.http4s" %% "http4s-circe" % Http4sVersion
 
-val logback = "ch.qos.logback"  %  "logback-classic" % LogbackVersion
-val specs   = "org.specs2"      %% "specs2-core"     % Specs2Version % "test"
-
+val logback   = "ch.qos.logback" % "logback-classic" % LogbackVersion
+val specs     = "org.specs2"     %% "specs2-core"    % Specs2Version % "test"
+val mockito   = "org.mockito"    % "mockito-all"     % mockitoVersion % "test"
+val scalaTest = "org.scalatest"  %% "scalatest"      % scalaTestVersion % "test"
 lazy val root = (project in file("."))
   .settings(
     organization := "scalasummerschool",
-    name         := "tictactoe",
-    version      := "0.0.1-SNAPSHOT",
-    scalaVersion := "2.12.6",
+    name := "tictactoe",
+    version := "0.0.1-SNAPSHOT",
+    scalaVersion := "2.12.6"
   )
   .aggregate(server, client)
 
@@ -31,7 +32,9 @@ lazy val server = (project in file("server"))
       "org.http4s" %% "http4s-dsl"          % Http4sVersion,
       http4sCirce,
       logback,
-      specs
+      specs,
+      mockito,
+      scalaTest
     ),
     addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full)
   )

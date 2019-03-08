@@ -8,18 +8,20 @@ import cats.implicits._
 import org.http4s.implicits._
 import org.http4s.server.Router
 import org.http4s.server.blaze.BlazeServerBuilder
+import scalasummerschool.tictactoe.util.GameLogicUtil
 
 object TicTacToeServer extends IOApp {
 
   // create a shared Map of user-names to users
   val usersIO = Ref.of[IO, Map[String, User]](Map.empty)
+  val gameLogicUtil = new GameLogicUtil()
 
   def run(args: List[String]): IO[ExitCode] = {
     def runServer(usersRef: Ref[IO, Map[String, User]]) = {
       // compose all services to create one REST api
       val httpApp = Router(
         "/users"     -> UserService.build(usersRef),
-        "/tictactoe" -> TicTacToeService.build()
+        "/tictactoe" -> TicTacToeService.build(gameLogicUtil)
       ).orNotFound
 
       // build a server application IO

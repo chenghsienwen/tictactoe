@@ -6,7 +6,7 @@ import cats.effect.concurrent.Ref
 import org.http4s._
 import org.http4s.implicits._
 import org.specs2.mutable.Specification
-
+//sbt "testOnly scalasummerschool.tictactoe.service.UserServiceSpec"
 object UserServiceSpec extends Specification {
 
   "UserService" should {
@@ -85,7 +85,7 @@ object UserServiceSpec extends Specification {
       } yield resp).unsafeRunSync()
 
       response.status must beEqualTo(Status.Ok)
-      response.as[String].unsafeRunSync().length must beEqualTo(32)
+      response.as[String].unsafeRunSync().length must beEqualTo(36)
     }
   }
 

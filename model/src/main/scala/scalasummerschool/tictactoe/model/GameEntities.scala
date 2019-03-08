@@ -1,8 +1,12 @@
 package scalasummerschool.tictactoe.model
 
+import io.circe.generic.semiauto._
+
 object GameEntities {
 
   type Field = Map[Int, Map[Int, GameSymbol]]
+  implicit val GameSymbolDec = deriveDecoder[GameSymbol]
+  implicit val GameSymbolEn  = deriveEncoder[GameSymbol]
 
   /**
     * Checks whether a specified cell is already set.

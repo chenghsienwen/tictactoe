@@ -1,10 +1,10 @@
-package scalasummerschool.tictactoe
+package scalasummerschool.tictactoe.util
 
 import scalasummerschool.tictactoe.model.GameEntities._
 
 import scala.util.Random
 
-object GameLogic {
+class GameLogicUtil {
   private val rand = new Random()
 
   /**
